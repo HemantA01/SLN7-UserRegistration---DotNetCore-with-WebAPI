@@ -1,0 +1,80 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LogicWorld || Login</title>
+    <link rel="stylesheet" href="" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    @*<link rel="stylesheet" href="~/css/custom.css" />*@
+</head>
+<body>
+    <div class="" style="display: flex; height: 100vh;">
+        <div class="container-fluid">
+            <div class="row mx-0">
+                <div class="col-md-9">
+                    <img src="~/images/hug-kiss-images.jpg" style="width: 100%;"  />
+                </div>
+                <div class="col-md-3" style="padding-top: 5rem;">
+                    <div>
+                        <h1>Welcome to LogicBee</h1>
+                    <h6>Lets login into world of LogicBee</h6>
+                    <div class="row">
+                        <label class="error" id="lblerror" style="color:red;"></label>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            <h6>Enter Username</h6>
+                            <input type="text" id="user_username" style="" autocomplete="off" class="form-control">
+                            <span style="color: red;">Invalid username</span>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            <h6>Enter Password</h6>
+                            <input type="text" id="user_password" style="" autocomplete="off" class="form-control">
+                            <span style="color: red;">Invalid password</span>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-primary text-uppercase" id="btnVerify">Log in to Logic Bee</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="UserDetails/VerifyUser">Forget Password?</a>
+                        </div>
+                    </div>
+                    
+                    @*<div class="row">
+                        <div class="col-sm-12">
+                            <input type="text" id="user_username" style="" autocomplete="off">
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-primary" id="btnVerify">Verify</button>
+                        </div>
+                    </div>*@
+
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

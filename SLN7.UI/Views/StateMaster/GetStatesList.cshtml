@@ -1,0 +1,127 @@
+﻿@model SLN7.MODEL.ViewModel.CountryStateViewModel
+@*@model List<SLN7.MODEL.ViewModel.CountryStateMasterViewModel>*@
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="right-section">
+    <div class="box-shadow  bg-white p-2 pb-5">
+        <div class="row row-border">
+            <div class="col-md-3">
+                <h1 class="pl-3 pt-3 page-heading text-left"> State Master </h1>
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-3">
+                <a class="btn-submit" id="addState" style="cursor: pointer;">Add States</a>
+            </div>
+        </div>
+        <table class="table mydatatable">
+            <thead>
+                <tr>
+                    <th>Country Name</th>
+                    <th>State Name</th>
+                    <th>Status</th>
+                    <th> Action </th>
+                </tr>
+            </thead>
+            <tbody id="tbDetails">
+                @{
+                    foreach (var item in Model.countrystateMasterViewModel)
+                    {
+                        <tr>
+                            <td>
+                                @item.CountryName   <input type="hidden" id="hdnCountryID" value=@item.CountryId />
+                            </td>
+                            <td>@item.StateName <input type="hidden" id="hdnStateID" value=@item.StateId /></td>
+                            <td>@item.IsStateActive</td>
+                            <td>
+                                <a class="stateedit" style="cursor: pointer;"><i class="fa fa-edit"></i></a>
+                                @if (@item.IsStateActive == "Active")
+                                {
+                                    <a class="stateactive" style="cursor: pointer;"><i class="fa fa-check"></i></a>
+                                }
+                                else
+                                {
+                                    <a class="stateactive" style="cursor: pointer;"><i class="fa fa-ban"></i></a>
+                                }
+                                <input type="hidden" id="hdnId" />
+                                <input type="hidden" id="hdnCntId" />
+                                <a class="deleteState" style="cursor: pointer;"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" id="modalleaddiv" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle"></h5>
+                        <button type="button" class="close" data-dismiss="modal" id="btnCloseM" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label>State Master Details</label>
+                        <div class="form-check">
+                            <label>Select Country:</label>
+                            @*@Html.DropDownListFor(m=> m.countryMasterViewModel, new SelectList(Model.countryMasterViewModel,"Id","CountryName",1),"--Select--", new{@class="form-control", @id="ddlCountry"})*@
+                            <select class="form-control" id="ddlCountry">
+                                @{
+                                    var count = 0;
+                                    <option value=0>--Select--</option>
+                                    foreach (var i in Model.countryMasterViewModel)
+                                    {
+                                        <option value=@i.Id>@i.CountryName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="form-check">
+                            <label>Select Status:</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" name="rbtnstatus" value="1">
+                            <label class="form-check-label" id="lblactive" for="flexRadioDefault1">Active</label>
+                            <input type="hidden" value="" id="currentstatus" />
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" name="rbtnstatus" value="0">
+                            <label class="form-check-label" id="lblinactive" for="flexRadioDefault2">Inactive</label>
+                        </div>
+                        <div class="form-group">
+                            <label id="lbldescription">State name:</label>
+                            <input type="text" id="txtdescription" class="form-control" placeholder="Enter State name" />
+                            <input type="hidden" id="txtprevvalue" />
+                            <span id="spnValidate" style="color: red;"></span>
+                        </div>
+                    </div>
+                    <div class="modal-footer pl-0">
+                        <div class="row w-100">
+                            <div class="col-sm-6 col-6 col-md-6 text-left pl-0">
+                                <button type="button" id="btnclose" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                            <div class="col-sm-6 col-6 col-md-6 text-right">
+                                <button type="button" id="btnsubmit" class="btn btn-primary modal-footer-add-btn">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<script src="~/js/Custom/Common.js"></script>*@
+<script src="~/js/Custom/StateMaster.js"></script>
+<script>
+    
+// JQuery Reference, If you have added jQuery reference in your master page then ignore, 
+// else include this too with the below reference
+
+<script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
+    //cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css
+    //    cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js
+</script>

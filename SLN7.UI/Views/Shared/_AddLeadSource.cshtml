@@ -1,0 +1,41 @@
+﻿<div class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" id="modalleaddiv" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"> </h5>
+                <button type="button" class="close" data-dismiss="modal" id="btnCloseM" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="htnid" />
+                <label>Lead Status</label>
+                <div class="form-check">
+                    <input type="radio" name="rbtnstatus" value="1">
+                    <label class="form-check-label" id="lblactive" for="flexRadioDefault1"> </label>
+                    <input type="hidden" value="" id="currentstatus"/>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="rbtnstatus" value="2">
+                    <label class="form-check-label" id="lblinactive" for="flexRadioDefault2"> </label>
+                </div>
+                <div class="form-group">
+                    <label id="lbldescription"></label>
+                    <input type="text" id="txtdescription" class="form-control" placeholder="" />
+                    <input type="hidden" id="txtprevvalue" />
+                    <span id="spnValidate" style="color: red;"></span>
+                </div>
+            </div> 
+            <div class="modal-footer pl-0">
+                <div class="row w-100">
+                    <div class="col-sm-6 col-6 col-md-6 text-left pl-0">
+                        <button type="button" id="btnclose" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                    <div class="col-sm-6 col-6 col-md-6 text-right">
+                        <button type="button" id="btnsubmit" class="btn btn-primary modal-footer-add-btn">Save changes</button>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>

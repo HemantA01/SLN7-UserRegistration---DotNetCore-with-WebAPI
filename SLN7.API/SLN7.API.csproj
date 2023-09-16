@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SLN7.DATA\SLN7.DATA.csproj" />
+    <ProjectReference Include="..\SLN7.SERVICE\SLN7.SERVICE.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Uploads\" />
+    <Folder Include="wwwroot\Uploads\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Uploads_test\Cam_04052023011610.xlsx" />
+    <None Include="wwwroot\Uploads_test\Cam_04052023011742.xlsx" />
+    <None Include="wwwroot\Uploads_test\Cam_04052023012349.xlsx" />
+    <None Include="wwwroot\Uploads_test\Carrier Plate_04052023012619.xlsx" />
+    <None Include="wwwroot\Uploads_test\cone_04052023012822.xlsx" />
+    <None Include="wwwroot\Uploads_test\Demodata1_06052023013744..xlsx" />
+    <None Include="wwwroot\Uploads_test\Demodata1_06052023013924.xlsx" />
+    <None Include="wwwroot\Uploads_test\Demodata1_06052023014200.xlsx" />
+    <None Include="wwwroot\Uploads_test\Demodata1_06052023020257.xlsx" />
+    <None Include="wwwroot\Uploads_test\Demodata1_06052023020452.xlsx" />
+    <None Include="wwwroot\Uploads_test\Demodata1_06052023020626.xlsx" />
+    <None Include="wwwroot\Uploads_test\Demodata1_06052023020748.xlsx" />
+    <None Include="wwwroot\Uploads_test\Demodata1_06052023021121.xlsx" />
+    <None Include="wwwroot\Uploads_test\Demodata1_1_06052023021406.xlsx" />
+    <None Include="wwwroot\Uploads_test\Demodata1_1_06052023021903.xlsx" />
+    <None Include="wwwroot\Uploads_test\Demodata1_1_06052023022204.xlsx" />
+    <None Include="wwwroot\Uploads_test\Screenshot %284%29_04052023010429.png" />
+    <None Include="wwwroot\Uploads_test\Screenshot %285%29.png" />
+    <None Include="wwwroot\Uploads_test\Screenshot_20230204_225825.png" />
+    <None Include="wwwroot\Uploads_test\Screenshot_20230214_085719.png" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,78 @@
+﻿@model List<SLN7.MODEL.ViewModel.UserRegistrationViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="right-section">
+    <div class="box-shadow  bg-white p-2 pb-5">
+        <div class="row row-border">
+            <div class="col-md-6">
+                <h1 class="pl-3 pt-3 page-heading text-left"> User Registration </h1>
+            </div>
+            <div class="col-md-6">
+                @*<a href="/UserRegistration/UserRegistrationDetails" class="btn-submit">New User Registration </a>*@
+                <a href="/Users/GetState" class="btn-submit">New User Registration </a>         @*Using attribute baesd routing*@
+            </div>
+        </div>
+        <table class="table mydatatable">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>User Name</th>
+                    <th>User Contact No.</th>
+                    <th>User Email</th>
+                    <th> DOB </th>
+                    <th>Gender</th>
+                    <th>Nationality</th>
+                    <th>Temporary Add</th>
+                    <th>Permanent Add</th>
+                    <th>Country</th>
+                    <th>State</th>
+                    <th>City</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tbDetails">
+                @{
+                    var count = 0; 
+                    foreach (var item in Model)
+                    {
+                        count += 1;
+                        <tr>
+                            <td>@count</td>
+                            <td>
+                                @item.UserFname @item.UserLname   <input type="hidden" id="hdnUserId" value=@item.UserId />
+                            </td>
+                            <td>@item.UserContact 
+                            <td>@item.UserEmail</td>
+                            <td>@item.DOB.ToShortDateString()</td>
+                            <td>@item.Gender</td>
+                            <td>@item.Nationality</td>
+                            <td>@item.TemporaryAddress</td>
+                            <td>@item.PermanentAddress</td>
+                            <td>@item.Country  <input type="hidden" id="hdnCountryId" value=@item.CountryId /></td>
+                            <td>@item.State  <input type="hidden" id="hdnStateId" value=@item.StateId /></td>
+                            <td>@item.City</td>
+                            <td>
+                                @*<a class="stateedit" style="cursor: pointer;" tooltip="Edit" href='/UserRegistration/UserRegistrationDetails/@item.UserId'><i class="fa fa-edit"></i></a>*@
+                                <a class="stateedit" style="cursor: pointer;" tooltip="Edit" href='/Users/GetState/@item.UserId'><i class="fa fa-edit"></i></a>   @*attribute baesd routing*@
+                                @*@if (@item.IsStateActive == "Active")
+                                //{
+                                //    <a class="stateactive" style="cursor: pointer;"><i class="fa fa-check"></i></a>
+                                //}
+                                //else
+                                //{
+                                //    <a class="stateactive" style="cursor: pointer;"><i class="fa fa-ban"></i></a>
+                                //}*@
+                                <input type="hidden" id="hdnId" />
+                                <a class="deleteUser" style="cursor: pointer;" tooltip="Delete"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

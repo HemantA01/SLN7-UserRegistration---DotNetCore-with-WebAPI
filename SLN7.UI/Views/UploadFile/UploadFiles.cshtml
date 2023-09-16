@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="right-section">
+    <div class="box-shadow  bg-white p-2 pb-5">
+        <div class="row row-border mt-0" id="">
+            <div class="col-md-12  personal-heading-section pl-0">
+                <h1 class="pl-1  page-heading text-left" style="">Upload Files </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Upload Image File</label>
+                    <input type="file" id="uploadImage" class="form-control" />
+                    <span style="color: red">*.jpg, *.jpeg, *.png</span>
+                </div>
+                <div style="padding-top: 1em;">
+                    <button id="btnUploadImage" class="btn btn-outline-primary">Upload Image</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/Custom/UploadFiles.js"></script>

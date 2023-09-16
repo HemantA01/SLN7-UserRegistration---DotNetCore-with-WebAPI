@@ -1,0 +1,74 @@
+﻿@model List<SLN7.MODEL.ViewModel.CountryMasterViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="right-section">
+    <div class="box-shadow  bg-white p-2 pb-5">
+        <div class="row row-border">
+            <div class="col-md-3">
+                <h1 class="pl-3 pt-3 page-heading text-left"> Country Master </h1>
+            </div>
+            <div class="col-md-2">
+                <input type="text" autocomplete="off" class="form-control" placeholder="Enter country name" id="txtCountry"  />
+            </div>
+            <div class="col-md-1">
+                <input type="text" autocomplete="off" class="form-control text-upp" placeholder="Enter country Abbreviation" id="txtCountryAbbr"  />
+            </div>
+            <div class="col-md-3"><b>Status:</b> 
+                <input type="radio" name="rdo1" value=1 />Active
+                <input type="radio" name="rdo1" value=0 />In-active
+            </div>
+            <div class="col-md-3">
+                <a class="btn-submit" id="addCountry" style="cursor: pointer;">Add Countries </a>
+            </div>
+        </div>
+        <table class="table mydatatable">
+            <thead>
+                <tr>
+                    <th>Country Name</th>
+                    <th>Country Abb</th>
+                    <th>Status</th>
+                    <th> Action </th>
+                </tr>
+            </thead>
+            <tbody id="tbDetails">
+                @{
+                    foreach (var data in Model)
+                    {
+
+                        <tr>
+
+                            <td>@data.CountryName</td>
+                            <td>@data.CountryAbb</td>
+                            <td>@data.IsCountryActive</td>
+                            <td>
+                                <a class="countryedit" style="cursor: pointer;"><i class="fa fa-edit"></i></a>
+                                <a class="leadedit1" id="getval" href=""><i class="fa fa-trash" style="display: none;"></i></a>
+                                @if (@data.IsCountryActive == "Active")
+                                {
+                                    <a class="countryactive" style="cursor: pointer;"><i class="fa fa-check"></i></a>
+                                }
+                                else
+                                {
+                                    <a class="countryactive" style="cursor: pointer;"><i class="fa fa-ban"></i></a>
+                                }
+                                <input type="hidden" id="hdnId" />
+                                <input type="hidden" id="hdnCountryId" value="@data.Id" />
+                                <a class="deleteCountry" style="cursor: pointer;"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="~/js/Custom/Common.js"></script>
+<script src="~/js/moment.js"></script>
+<script src="~/js/Custom/CountryMaster.js"></script>
+
+
