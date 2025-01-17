@@ -91,5 +91,41 @@ namespace SLN7.API.Controllers
                 throw;
             }
         }
+
+        [HttpGet, Route("GetStateById")]
+        public async Task<IActionResult> GetStateById(int id)
+        {
+            try
+            {
+                var getstate = await _state.GetStateById(id);
+                if (getstate != null)
+                {
+                    return Ok(getstate);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpPut]
+        [Route("updatestate-with-countries")]
+        public async Task<IActionResult> UpdateStateDetailsWithCountry(int Id, int? CountryId, StateMasterViewModel model)
+        {
+            try
+            {
+                var updateVal = await _state.UpdateStatesWithCountry(Id, CountryId, model);
+                return Ok(updateVal);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

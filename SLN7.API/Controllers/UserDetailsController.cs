@@ -49,7 +49,5 @@ namespace SLN7.API.Controllers
                 throw;
             }
         }
-
-
     }
 }

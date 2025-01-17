@@ -17,7 +17,7 @@ namespace SLN7.API.Controllers
             _upload = upload;
             _webHostEnvironment = webHostEnvironment;
         }
-        [HttpPost, Route("upload-image")]
+       [HttpPost, Route("upload-image")]
         public async Task<IActionResult> UploadImages([FromForm] IFormFile file)
         {
             try

@@ -21,17 +21,17 @@ namespace SLN7.API.Controllers
             {
                 var userid = HttpContext.Session.GetInt32("UserId");
                 var getCountries = await _ICountry.GetAllCountries();
-                /*if (getCountries.Count > 0)
-                {
-                    return Ok(getCountries);
-                }
-                else
-                {
-                    MessageResponse msg = new MessageResponse();
-                    msg.Status = "Empty";
-                    msg.Message = "No Data Available";
-                    return Ok(msg);
-                }*/
+                //if (getCountries.Count > 0)
+                //{
+                //    return Ok(getCountries);
+                //}
+                //else
+                //{
+                //    MessageResponse msg = new MessageResponse();
+                //    msg.Status = "Empty";
+                //    msg.Message = "No Data Available";
+                //    return Ok(msg);
+                //}
                 return Ok(getCountries);
             }
             catch (Exception)
@@ -44,6 +44,7 @@ namespace SLN7.API.Controllers
         {
             try
             {
+                //return BadRequest(null);
                 var addCountry = await _ICountry.AddCountries(model);
                 return Ok(addCountry);
             }
@@ -74,6 +75,22 @@ namespace SLN7.API.Controllers
                 return Ok(deletecountry);
             }
             catch (Exception)
+            {
+                throw;
+            }
+        }
+        [HttpGet, Route("getcountry-byid")]
+        public async Task<IActionResult> GetCountryById(int id)
+        {
+            try
+            {
+                var getcountry = await _ICountry.GetCountry(id);
+                if(getcountry!=null)
+                    return Ok(getcountry);
+                else
+                    return BadRequest();
+            }
+            catch (Exception ex)
             {
                 throw;
             }

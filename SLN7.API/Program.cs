@@ -30,6 +30,7 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 builder.Logging.ClearProviders();
 //builder.Logging.AddSerilog();
+builder.Services.AddCors();
 
 builder.Services.AddScoped<IUserDetails, UserDetails>();
 builder.Services.AddScoped<ILeadSource, LeadSource>();
@@ -64,9 +65,12 @@ Console.WriteLine("Hello, World!");
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SLN7.API v1"));
+    //app.UseSwaggerUI(); 
 }
+app.UseSwagger();
+app.UseSwaggerUI(c => {
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "SLN7.API v1");
+    });
 
 
 
@@ -88,7 +92,7 @@ var summaries = new[]
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
-app.MapGet("/weatherforecast", () =>
+/*app.MapGet("/weatherforecast", () =>
 {
     var forecast = Enumerable.Range(1, 5).Select(index =>
        new WeatherForecast
@@ -99,11 +103,11 @@ app.MapGet("/weatherforecast", () =>
        ))
         .ToArray();
     return forecast;
-});
+});*/
 
 app.Run();
 
-internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
+/*internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+}*/

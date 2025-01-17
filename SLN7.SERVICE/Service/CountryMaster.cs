@@ -131,5 +131,29 @@ namespace SLN7.SERVICE.Service
             }
         }
         #endregion
+
+        #region Get Country details by Id
+        public async Task<CountryMasterViewModel> GetCountry(int Id)
+        {
+            try
+            {
+                var getdetails = await _appContext.tblCountryMaster.Where(x => x.Id == Id).
+                    Select(x => new CountryMasterViewModel
+                    {
+                        Id=x.Id,
+                        CountryName=x.CountryName,
+                        CountryAbb=x.CountryAbb, 
+                        IsActive=x.IsActive
+                    }).
+                    FirstOrDefaultAsync();
+                return getdetails;
+                
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        #endregion
     }
 }

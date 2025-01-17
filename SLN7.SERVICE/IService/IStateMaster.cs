@@ -15,5 +15,7 @@ namespace SLN7.SERVICE.IService
         Task<int> UpdateStates(int Id, int? CountryId, StateMasterViewModel model);
         Task<int> DeleteState(int Id);
         Task<List<CountryWithStateListViewModel>> GetCountryWithStateList();
+        Task<StateMasterViewModel> GetStateById(int Id);
+        Task<int> UpdateStatesWithCountry(int Id, int? CountryId, StateMasterViewModel model);
     }
 }

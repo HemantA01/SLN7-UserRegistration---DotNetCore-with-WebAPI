@@ -1,0 +1,6 @@
+@SLN7.MultipleAPI_HostAddress = http://localhost:5059
+
+GET {{SLN7.MultipleAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

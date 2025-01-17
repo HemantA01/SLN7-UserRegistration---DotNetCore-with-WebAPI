@@ -13,5 +13,6 @@ namespace SLN7.SERVICE.IService
         Task<int> AddCountries(CountryMasterViewModel model);
         Task<int> UpdateCountry(int Id, CountryMasterViewModel model);
         Task<int> DeleteCountry(int Id);
+        Task<CountryMasterViewModel> GetCountry(int Id);
     }
 }

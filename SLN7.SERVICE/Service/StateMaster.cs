@@ -154,18 +154,18 @@ namespace SLN7.SERVICE.Service
                 List<CountryWithStateListViewModel> countryWithStateListView = new List<CountryWithStateListViewModel>();
 
                 CountryStateViewModel getdetails = new CountryStateViewModel();
-                
+
                 var cntdata = await _context.tblCountryMaster.Where(c => c.IsActive == true).ToListAsync();
                 if (cntdata != null)
                 {
                     foreach (var item in cntdata)
                     {
                         CountryWithStateListViewModel getcountryMasterViewModel = new CountryWithStateListViewModel();
-                        getcountryMasterViewModel.CountryId = item.Id; 
+                        getcountryMasterViewModel.CountryId = item.Id;
                         getcountryMasterViewModel.CountryName = item.CountryName;
                         getcountryMasterViewModel.CountryAbb = item.CountryAbb;
                         //getdetails.countryMasterViewModel.Add(getcountryMasterViewModel);
-                        var getstate = await _context.tblStateMaster.Where(x=>x.CountryId==item.Id).ToListAsync();
+                        var getstate = await _context.tblStateMaster.Where(x => x.CountryId == item.Id).ToListAsync();
                         foreach (var item1 in getstate)
                         {
                             StateMasterViewModel getstateMasterViewModel = new StateMasterViewModel();
@@ -185,5 +185,56 @@ namespace SLN7.SERVICE.Service
             }
         }
         #endregion
+
+        #region Retrieve State by Id
+        public async Task<StateMasterViewModel> GetStateById(int Id)
+        {
+            try
+            {
+                var getdetails = await _context.tblStateMaster.Where(x => x.Id == Id).
+                    Select(x=> new StateMasterViewModel
+                    {
+                        Id = x.Id,
+                        StateName = x.StateName,
+                        CountryId = x.CountryId,
+                        IsActive = x.IsActive
+                    }).
+                    FirstOrDefaultAsync();
+                return getdetails;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        #endregion
+
+        #region Update State details with countries
+        public async Task<int> UpdateStatesWithCountry(int Id, int? CountryId, StateMasterViewModel model)
+        {
+            try
+            {
+                int i = -1;
+                var ifExists = await _context.tblStateMaster.Where(x => x.Id == Id).FirstOrDefaultAsync();
+                if (ifExists != null)
+                {
+                    ifExists.CountryId = model.CountryId;
+                    ifExists.StateName = model.StateName.ToUpper();
+                    ifExists.IsActive = model.IsActive;
+                    i = await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    i = -2;
+                }
+                return i;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        #endregion
+
     }
 }
